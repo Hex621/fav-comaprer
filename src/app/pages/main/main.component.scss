@@ -1,0 +1,57 @@
+.inputs {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+      margin: 1vw;
+    }
+    span {
+      margin: 10px;
+    }
+    h4 {
+      margin: 0;
+    }
+    .radio {
+      align-items: right;
+    }
+    .field-radiobutton {
+      margin: 10px;
+      label {
+        margin-left: 5px;
+      }
+    }
+}
+
+div {
+  top: 50%;
+  left: 50%;
+}
+
+#container {
+  width: 50px;
+  height: 50px;
+  margin: 20px;
+}
+
+@keyframes animation {
+  0% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -105;
+  }
+  50% {
+    stroke-dasharray: 80 10;
+    stroke-dashoffset: -160;
+  }
+  100% {
+    stroke-dasharray: 1 98;
+    stroke-dashoffset: -300;
+  }
+}
+
+#spinner {
+  transform-origin: center;
+  animation-name: animation;
+  animation-duration: 1.2s;
+  animation-timing-function: cubic-bezier;
+  animation-iteration-count: infinite;
+}

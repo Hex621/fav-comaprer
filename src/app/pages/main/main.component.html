@@ -1,0 +1,44 @@
+<div class="inputs">
+  <h1>E621 Favorite/Upvote similarity measurement</h1>
+  <span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="user1">
+    <label for="float-input">User 1 name</label>
+  </span>
+  <span class="p-float-label">
+    <input id="float-input" type="text" pInputText [(ngModel)]="user2">
+    <label for="float-input">User 2 name</label>
+  </span>
+  <h4>Comapre By</h4>
+  <div class="radio">
+    <div class="field-radiobutton">
+      <p-radioButton name="mode" value="favs" [(ngModel)]="mode" inputId="mode1"></p-radioButton>
+      <label for="mode1">Favorites</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton name="mode" value="ups" [(ngModel)]="mode" inputId="mode2"></p-radioButton>
+      <label for="mode2">Upvotes</label>
+    </div>
+  </div>
+  <p-button [disabled]="!user1 || !user2 || !mode || isLoading" (onClick)="measure()" label="Measure"></p-button>
+  <div *ngIf="isLoading" id="container">
+    <svg viewBox="0 0 100 100">
+      <defs>
+        <filter id="shadow">
+          <feDropShadow dx="0" dy="0" stdDeviation="1.5"
+            flood-color="#fc6767"/>
+        </filter>
+      </defs>
+      <circle id="spinner" style="fill:transparent;stroke:#007af3;stroke-width: 7px;stroke-linecap: round;filter:url(#shadow);" cx="50" cy="50" r="45"/>
+  </svg>
+
+  </div>
+  <div *ngIf="isLoading">
+  Number of posts fetched: {{(user1Posts.length+user2Posts.length)}}
+  </div>
+  <h4 *ngIf="finalMatches.length < 1">There was no match between the users!</h4>
+  <h4 *ngIf="finalMatches.length >= 1">{{finalMatches.length}} pictures were matching that's {{((finalMatches.length)/((user1Posts.length+user2Posts.length)/2))*100 | number }} % of a match.</h4>
+
+
+</div>
+
+
